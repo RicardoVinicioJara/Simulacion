@@ -1,0 +1,19 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="list.modelo" />
+          <option value="list.tipo_vehiculo_id" />
+          <option value="list.clase_vehiculo_id" />
+          <option value="list.anio_fabricacion" />
+          <option value="list.color_primerio" />
+          <option value="list.color_secundario" />
+          <option value="list.dato_icorrecto" />
+          <option value="list.marca" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

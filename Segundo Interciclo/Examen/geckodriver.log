@@ -1,0 +1,12 @@
+1612123409164	geckodriver	INFO	Listening on 127.0.0.1:51065
+1612123409210	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\vinic\\AppData\\Local\\Temp\\rust_mozprofileN1SiuG"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612123412275	Marionette	INFO	Listening on port 51070
+1612123412415	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612123412433	Marionette	ERROR	[15] No reply from Marionette:Register
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+1612123414764	Marionette	INFO	Stopped listening on port 51070
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

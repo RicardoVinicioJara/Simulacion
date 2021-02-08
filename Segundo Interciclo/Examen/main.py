@@ -47,6 +47,8 @@ class Examen():
             self.driver.find_element_by_id("copy-button").click()
             cor.append(Tk().clipboard_get())
             est.append(bool(random.getrandbits(1)))
+            time.sleep(1)
+            self.driver.refresh()
         self.datos['correo'] = cor
         self.datos['estado'] = est
 
@@ -83,7 +85,7 @@ class Examen():
     def post_content(self):
         time.sleep(1)
         self.driver.find_element_by_css_selector(".jm1wdb64 > .a8c37x1j").click()
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element_by_css_selector(".notranslate")
         activepostarea = self.driver.switch_to_active_element()
         activepostarea.send_keys(Keys.CONTROL, 'v')

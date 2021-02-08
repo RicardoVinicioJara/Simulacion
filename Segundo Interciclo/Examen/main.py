@@ -87,10 +87,12 @@ class Examen():
 
     def copiar_imagen(self):
         self.driver.get(
-            "https://github.com/RicardoVinicioJara/Simulacion/blob/main/Segundo%20Interciclo/Examen/image.png")
-        ele = self.driver.find_element_by_xpath("//img[@alt='image.png']")
+            "https://raw.githubusercontent.com/RicardoVinicioJara/Simulacion/main/Segundo%20Interciclo/Examen/image.png")
+        ele = self.driver.find_element_by_css_selector("img")
         ele.click()
-        
+        ele.click()
+        activepostarea = self.driver.switch_to_active_element()
+        activepostarea.send_keys(Keys.CONTROL, 'c')
 
     def ubicar_celdas(self, txt):
         seldas = self.driver.find_element_by_id('t-name-box')

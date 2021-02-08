@@ -79,8 +79,18 @@ class Examen():
         self.driver.find_element_by_css_selector(".notranslate")
         activepostarea = self.driver.switch_to_active_element()
         activepostarea.send_keys(Keys.CONTROL, 'v')
-        e = self.driver.find_element_by_css_selector(".k4urcfbm > .oajrlxb2 > .rq0escxv > .rq0escxv > .d2edcug0 > .a8c37x1j")
+        time.sleep(2)
+        activepostarea.send_keys("02/18/2021")
+        e = self.driver.find_element_by_css_selector(
+            ".k4urcfbm > .oajrlxb2 > .rq0escxv > .rq0escxv > .d2edcug0 > .a8c37x1j")
         e.click()
+
+    def copiar_imagen(self):
+        self.driver.get(
+            "https://github.com/RicardoVinicioJara/Simulacion/blob/main/Segundo%20Interciclo/Examen/image.png")
+        ele = self.driver.find_element_by_xpath("//img[@alt='image.png']")
+        ele.click()
+        
 
     def ubicar_celdas(self, txt):
         seldas = self.driver.find_element_by_id('t-name-box')
@@ -105,6 +115,7 @@ class Examen():
 if __name__ == '__main__':
     t = Examen()
     t.inicio()
+    t.copiar_imagen()
     t.login("ups_uclqlhf_chatt@tfbnw.net", "holaholahola")
     t.post_content("ajajja  teste")
     # t.get_correos()

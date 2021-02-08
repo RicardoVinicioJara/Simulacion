@@ -28,7 +28,7 @@ class Examen():
         self.driver.get("https://generadordenombres.online/")
         nom = []
         ape = []
-        for i in range(0, 10):
+        for i in range(0, 3):
             names = self.driver.find_element_by_id('nombreGenerado')
             name = str(names.text).split(sep=' ')
             nom.append(name[0])
@@ -41,12 +41,18 @@ class Examen():
         self.driver.get("https://10minutemail.net/")
         cor = []
         est = []
-        for i in range(0, 10):
+        for i in range(0, 3):
             self.driver.find_element_by_id("copy-button").click()
             cor.append(Tk().clipboard_get())
             est.append(bool(random.getrandbits(1)))
         self.datos['correo'] = cor
         self.datos['estado'] = est
+
+    def to_correos(self):
+        txt = ""
+        for i in range(0, len(self.datos['correo'])):
+            txt = txt + self.datos['correo'][i] + ","
+        return txt
 
     def escribir(self, body):
         for i in range(0, len(self.datos['nombre'])):
@@ -72,7 +78,7 @@ class Examen():
         Password.send_keys(password)
         self.driver.find_element_by_id("u_0_b").click()
 
-    def post_content(self, post):
+    def post_content(self):
         time.sleep(1)
         self.driver.find_element_by_css_selector(".jm1wdb64 > .a8c37x1j").click()
         time.sleep(1)
@@ -113,15 +119,54 @@ class Examen():
         body = self.driver.find_element_by_class_name('cell-input')
         self.escribir(body)
 
+    def correo(self, correos, asunto="Flyer Elecciones"):
+        self.driver.get(
+            'https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1612797357&rver=7.0.6737.0&wp=MBI_SSL'
+            '&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3db97197b5-ba7d-e675-321b'
+            '-8f36488fb774&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015')
+
+        email = self.driver.find_element_by_name('loginfmt')
+        email.send_keys('appdisup@hotmail.com')
+        time.sleep(1)
+        email.send_keys(Keys.ENTER)
+        pasw = self.driver.find_element_by_name('passwd')
+        pasw.send_keys('123UPS45')
+        time.sleep(1)
+        self.driver.find_element_by_id('idSIButton9').click()
+        time.sleep(1)
+        self.driver.find_element_by_id("id__5").click()
+        time.sleep(1)
+        para = self.driver.find_element_by_class_name("ms-BasePicker-input")
+        para.send_keys(correos)
+        time.sleep(1)
+        para.send_keys(Keys.TAB)
+        time.sleep(1)
+        asu = self.driver.find_element_by_class_name("ms-TextField-field")
+        asu.send_keys(asunto)
+        time.sleep(1)
+        asu.send_keys(Keys.TAB)
+        mot = self.driver.find_element_by_class_name("_4utP_vaqQ3UQZH0GEBVQe")
+        mot.send_keys(asunto)
+        time.sleep(1)
+        mot.send_keys(Keys.CONTROL, 'v')
+        time.sleep(2)
+        self.driver.find_element_by_id("id__103").click()
+
 
 if __name__ == '__main__':
     t = Examen()
     t.inicio()
-    t.copiar_imagen()
-    t.login("ups_uclqlhf_chatt@tfbnw.net", "holaholahola")
-    t.post_content("ajajja  teste")
     # t.get_correos()
+    t.datos = {'nombre': [], 'apellido': [],
+               'correo': ['jiz70967@cuoly.com', 'jiz70967@cuoly.com', 'jiz70967@cuoly.com'],
+               'estado': [True, False, True]}
+    print(t.datos)
     # t.get_nombres()
+    t.copiar_imagen()
+    t.correo(t.to_correos())
     # print(t.datos)
     # t.escribir_exel()
+    #t.copiar_imagen()
+    # t.login("ups_uclqlhf_chatt@tfbnw.net", "holaholahola")
+    # t.post_content()
     # t.fin()

@@ -6,6 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 
+tam = 10
+
 
 class Examen():
     def inicio(self):
@@ -28,7 +30,7 @@ class Examen():
         self.driver.get("https://generadordenombres.online/")
         nom = []
         ape = []
-        for i in range(0, 3):
+        for i in range(0, tam):
             names = self.driver.find_element_by_id('nombreGenerado')
             name = str(names.text).split(sep=' ')
             nom.append(name[0])
@@ -41,7 +43,7 @@ class Examen():
         self.driver.get("https://10minutemail.net/")
         cor = []
         est = []
-        for i in range(0, 3):
+        for i in range(0, tam):
             self.driver.find_element_by_id("copy-button").click()
             cor.append(Tk().clipboard_get())
             est.append(bool(random.getrandbits(1)))
@@ -90,6 +92,7 @@ class Examen():
         e = self.driver.find_element_by_css_selector(
             ".k4urcfbm > .oajrlxb2 > .rq0escxv > .rq0escxv > .d2edcug0 > .a8c37x1j")
         e.click()
+        time.sleep(5)
 
     def copiar_imagen(self):
         self.driver.get(
@@ -135,7 +138,7 @@ class Examen():
         self.driver.find_element_by_id('idSIButton9').click()
         time.sleep(1)
         self.driver.find_element_by_id("id__5").click()
-        time.sleep(1)
+        time.sleep(2)
         para = self.driver.find_element_by_class_name("ms-BasePicker-input")
         para.send_keys(correos)
         time.sleep(1)
@@ -149,24 +152,29 @@ class Examen():
         mot.send_keys(asunto)
         time.sleep(1)
         mot.send_keys(Keys.CONTROL, 'v')
+        time.sleep(7)
+        mot.send_keys(Keys.CONTROL, Keys.ENTER)
         time.sleep(2)
-        self.driver.find_element_by_id("id__103").click()
+        self.driver.get("https://outlook.live.com/mail/0/sentitems")
 
 
 if __name__ == '__main__':
     t = Examen()
     t.inicio()
-    # t.get_correos()
-    t.datos = {'nombre': [], 'apellido': [],
-               'correo': ['jiz70967@cuoly.com', 'jiz70967@cuoly.com', 'jiz70967@cuoly.com'],
-               'estado': [True, False, True]}
+    t.get_correos()
+    t.get_nombres()
     print(t.datos)
-    # t.get_nombres()
+    # t.datos = {
+    #     'nombre': ['Nora', 'Carme', 'Eloisa', 'Josefa', 'Teodoro', 'Melania', 'Mariana', 'Camilo', 'Driss', 'Markel'],
+    #     'apellido': ['Martos', 'Melendez', 'Díaz', 'Batista', 'Oliver', 'Prats', 'San', 'Roldan', 'Palma', 'Noguera'],
+    #     'correo': ['obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com',
+    #                'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com',
+    #                'obp10406@zwoho.com', 'obp10406@zwoho.com'],
+    #     'estado': [True, True, False, True, False, False, False, True, False, False]}
+
+    t.escribir_exel()
     t.copiar_imagen()
-    t.correo(t.to_correos())
-    # print(t.datos)
-    # t.escribir_exel()
-    #t.copiar_imagen()
-    # t.login("ups_uclqlhf_chatt@tfbnw.net", "holaholahola")
-    # t.post_content()
+    t.login("ups_uclqlhf_chatt@tfbnw.net", "holaholahola")
+    t.post_content()
+    t.correo(t.to_correos(), "Examen Simulacion")
     # t.fin()

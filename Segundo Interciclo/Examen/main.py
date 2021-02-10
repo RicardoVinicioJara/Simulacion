@@ -163,20 +163,20 @@ class Examen():
 if __name__ == '__main__':
     t = Examen()
     t.inicio()
-    t.get_correos()
-    t.get_nombres()
+    # t.get_correos()
+    # t.get_nombres()
     print(t.datos)
-    # t.datos = {
-    #     'nombre': ['Nora', 'Carme', 'Eloisa', 'Josefa', 'Teodoro', 'Melania', 'Mariana', 'Camilo', 'Driss', 'Markel'],
-    #     'apellido': ['Martos', 'Melendez', 'Díaz', 'Batista', 'Oliver', 'Prats', 'San', 'Roldan', 'Palma', 'Noguera'],
-    #     'correo': ['obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com',
-    #                'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com',
-    #                'obp10406@zwoho.com', 'obp10406@zwoho.com'],
-    #     'estado': [True, True, False, True, False, False, False, True, False, False]}
+    t.datos = {
+        'nombre': ['Nora', 'Carme', 'Eloisa', 'Josefa', 'Teodoro', 'Melania', 'Mariana', 'Camilo', 'Driss', 'Markel'],
+        'apellido': ['Martos', 'Melendez', 'Díaz', 'Batista', 'Oliver', 'Prats', 'San', 'Roldan', 'Palma', 'Noguera'],
+        'correo': ['obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com',
+                   'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com', 'obp10406@zwoho.com',
+                   'obp10406@zwoho.com', 'obp10406@zwoho.com'],
+        'estado': [True, True, False, True, False, False, False, True, False, False]}
 
     t.escribir_exel()
     t.copiar_imagen()
     t.login("ups_uclqlhf_chatt@tfbnw.net", "holaholahola")
     t.post_content()
     t.correo(t.to_correos(), "Examen Simulacion")
-    # t.fin()
+    t.fin()
